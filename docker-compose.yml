@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src
+    command: 'yarn dev'
+    ports:
+      - '8000:8000' # nextjs
+      - '9229:9229' # debug
+  storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src
+    command: 'yarn storybook'
+    ports:
+      - '6006:6006' # storybook

@@ -4,10 +4,10 @@ import { Responsive } from 'types'
 import { toPropValue, FontSize, Space } from 'utils/styles'
 
 // ボタンのバリアント
-export type StoneVariant = 'black' | 'white'
+export type DiskVariant = 'black' | 'white'
 
-export type StoneProps = {
-  variant?: StoneVariant
+export type DiskProps = {
+  variant?: DiskVariant
   fontSize?: Responsive<FontSize>
   margin?: Responsive<Space>
   padding?: Responsive<Space>
@@ -19,8 +19,8 @@ const variants = {
     fontSize: 'extraLarge',
   },
   white: {
-    color: 'black',
-    fontSize: 'large',
+    color: 'white',
+    fontSize: 'extraLarge',
   },
 }
 
@@ -28,7 +28,7 @@ const variants = {
  * ボタン
  * バリアント、色、タイポグラフィ、レイアウト、スペース関連のPropsを追加
  */
-const Stone = styled.span<StoneProps>`
+const Disk = styled.span<DiskProps>`
   ${({ variant, color, fontSize, theme }) => {
     // バリアントのスタイルの適用
     if (variant && variants[variant]) {
@@ -45,10 +45,10 @@ const Stone = styled.span<StoneProps>`
   ${(props) => toPropValue('padding', props.padding, props.theme)}
 `
 
-Stone.defaultProps = {
+Disk.defaultProps = {
   variant: 'black',
   color: 'black',
   fontSize: 'extraLarge',
 }
 
-export default Stone
+export default Disk

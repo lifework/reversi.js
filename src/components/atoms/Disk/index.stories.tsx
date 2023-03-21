@@ -1,7 +1,6 @@
-import CircleIcon from '@mui/icons-material/Circle'
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined'
+import { Circle, CircleOutlined } from '@mui/icons-material'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Stone from './index'
+import Disk from './index'
 
 type CircleIconProps = {
   fontSize?: string
@@ -10,24 +9,24 @@ type CircleIconProps = {
 
 const CircleIconComponent = ({ fontSize, color }: CircleIconProps) => (
   <span style={{ fontSize, color }}>
-    <CircleIcon fontSize="inherit" color="inherit" />
+    <Circle fontSize="inherit" color="inherit" />
   </span>
 )
 
 const CircleOutlinedIconComponent = ({ fontSize, color }: CircleIconProps) => (
   <span style={{ fontSize, color }}>
-    <CircleOutlinedIcon fontSize="inherit" color="inherit" />
+    <CircleOutlined fontSize="inherit" color="inherit" />
   </span>
 )
 
 export default {
-  title: 'Atoms/Stone',
+  title: 'Atoms/Disk',
   argTypes: {
     variant: {
       options: ['black', 'white'],
       control: { type: 'radio' },
       defaultValue: 'black',
-      description: 'ボタンバリアント',
+      description: 'バリアント',
       table: {
         type: { summary: 'black | white' },
         defaultValue: { summary: 'black' },
@@ -35,15 +34,15 @@ export default {
     },
     size: {
       control: { type: 'number' },
-      description: '石の大きさ',
+      description: '大きさ',
       table: {
         type: { summary: 'number' },
       },
     },
   },
-} as ComponentMeta<typeof Stone>
+} as ComponentMeta<typeof Disk>
 
-const Template: ComponentStory<typeof Stone> = (args) => <Stone {...args} />
+const Template: ComponentStory<typeof Disk> = (args) => <Disk {...args} />
 
 // Black
 export const Black = Template.bind({})

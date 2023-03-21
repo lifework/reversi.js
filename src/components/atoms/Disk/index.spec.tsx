@@ -1,16 +1,16 @@
 import { render, screen, fireEvent, RenderResult } from '@testing-library/react'
-import Stone from '.'
+import Disk from '.'
 
-describe('Stone', () => {
+describe('Disk', () => {
   let renderResult: RenderResult
   let handleClick: jest.Mock
 
   beforeEach(() => {
     handleClick = jest.fn()
     renderResult = render(
-      <Stone variant="black" onClick={handleClick}>
+      <Disk variant="black" onClick={handleClick}>
         Button
-      </Stone>,
+      </Disk>,
     )
   })
 

@@ -1,23 +1,15 @@
 const path = require('path')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
-
 module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
-  ],
-  "framework": "@storybook/react",
-  "core": {
-    "builder": "@storybook/builder-webpack5"
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+  framework: '@storybook/react',
+  core: {
+    builder: '@storybook/builder-webpack5',
   },
   staticDirs: ['public'],
-  babel: async options => ({
+  babel: async (options) => ({
     ...options,
     plugins: [
       '@babel/plugin-proposal-class-properties',
@@ -26,15 +18,9 @@ module.exports = {
     ],
   }),
   webpackFinal(config) {
-    config.resolve.modules = [
-      ...(config.resolve.modules || []),
-      path.resolve(__dirname, '../src')
-    ]
+    config.resolve.modules = [...(config.resolve.modules || []), path.resolve(__dirname, '../src')]
 
-    config.resolve.plugins = [
-      ...(config.resolve.plugins || []),
-      new TsconfigPathsPlugin()
-    ]
-    return config;
+    config.resolve.plugins = [...(config.resolve.plugins || []), new TsconfigPathsPlugin()]
+    return config
   },
 }

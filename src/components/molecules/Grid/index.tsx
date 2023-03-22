@@ -1,17 +1,27 @@
+import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
-import { toPropValue } from 'utils/styles'
+import { Disk } from 'components/atoms/Disk'
+
+export type GridColor = 'green'
+export type DiskColor = 'black' | 'white'
 
 export type GridProps = {
-  backgroundColor: string
-  size: string
+  color?: GridColor
+  diskColor?: DiskColor
 }
 
-const Grid = styled.div<GridProps>`
-  width: 100px;
-  height: 100px;
+const StyledGrid = styled.div<{ color?: string }>`
+  width: 100%;
+  height: 100%;
+  max-width: 100px;
+  max-height: 100px;
+  min-width: 10px;
+  min-height: 10px;
   border-color: black;
   border-width: 1px;
-  background-color: green;
+  background-color: ${({ color }) => color};
 `
 
-export default Grid
+export const Grid: FC<GridProps> = ({ color, diskColor }) => {
+  return <StyledGrid color={color}>{!!diskColor && <Disk color={diskColor} />}</StyledGrid>
+}

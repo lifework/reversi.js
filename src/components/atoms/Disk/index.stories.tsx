@@ -12,10 +12,12 @@ const Template: ComponentStory<typeof Disk> = (args) => <Disk {...args} />
 export const Black = Template.bind({})
 Black.args = {
   color: 'black',
+  size: '100px',
 }
 
 // White
 export const White = Template.bind({})
 White.args = {
   color: 'white',
+  size: '100px',
 }

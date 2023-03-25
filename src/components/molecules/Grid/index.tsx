@@ -23,5 +23,9 @@ const StyledGrid = styled.div<{ color?: string }>`
 `
 
 export const Grid: FC<GridProps> = ({ color, diskColor }) => {
-  return <StyledGrid color={color}>{!!diskColor && <Disk color={diskColor} />}</StyledGrid>
+  return (
+    <StyledGrid color={color}>
+      {!!diskColor && <Disk color={diskColor} />}
+    </StyledGrid>
+  )
 }

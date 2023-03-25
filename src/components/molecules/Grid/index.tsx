@@ -13,8 +13,6 @@ export type GridProps = {
 const StyledGrid = styled.div<{ color?: string }>`
   width: 100%;
   height: 100%;
-  min-width: 10px;
-  min-height: 10px;
   border-color: black;
   border-width: 1px;
   border-style: solid;

@@ -7,11 +7,7 @@ export default {
 } as ComponentMeta<typeof Game>
 
 const Template: ComponentStory<typeof Game> = (args) => {
-  return (
-    <div style={{ width: '400px', height: '400px' }}>
-      <Game {...args} />
-    </div>
-  )
+  return <Game {...args} />
 }
 
 export const Default = Template.bind({})

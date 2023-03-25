@@ -1,26 +1,30 @@
 import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
-import { Board } from 'components/organism/Board'
+import { Board, BoardColor } from 'components/organism/Board'
 
 export type GameProps = {
-  columns: number
-  rows: number
+  color?: BoardColor
+  columns?: number
+  rows?: number
+  boardSize?: number
 }
 
 const StyledGame = styled.div<GameProps>`
-  display: grid;
-  grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
-  width: 400px;
-  height: 400px;
   border-color: black;
   border-width: 1px;
-  background-color: ${({ color }) => color};
+  border-style: solid;
+  padding: 2px;
 `
 
-export const Game: FC<GameProps> = ({ color, columns, rows }) => {
+export const Game: FC<GameProps> = ({ color, columns, rows, boardSize }) => {
   return (
-    <StyledGame color={color} columns={columns} rows={rows}>
-      <Board color={color} columns={columns} rows={rows} />
+    <StyledGame>
+      <Board
+        color={color || 'green'}
+        columns={columns || 8}
+        rows={rows || 8}
+        boardSize={boardSize || 500}
+      />
     </StyledGame>
   )
 }

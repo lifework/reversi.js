@@ -1,16 +1,31 @@
+import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
+import { Grid, GridColor } from 'components/molecules/Grid'
 
 export type BoardProps = {
-  backgroundColor: string
-  size: string
+  color?: GridColor
+  columns: number
+  rows: number
 }
 
-const Board = styled.div<BoardProps>`
-  width: 100px;
-  height: 100px;
+const StyledBoard = styled.div<BoardProps>`
+  display: grid;
+  grid-template-columns: repeat(${({ columns }) => columns}, 1fr);
+  width: 400px;
+  height: 400px;
   border-color: black;
   border-width: 1px;
-  background-color: green;
+  background-color: ${({ color }) => color};
 `
 
-export default Board
+export const Board: FC<BoardProps> = ({ color, columns, rows }) => {
+  const grids = []
+  for (let i = 0; i < columns * rows; i++) {
+    grids.push(<Grid color={color} />)
+  }
+  return (
+    <StyledBoard color={color} columns={columns} rows={rows}>
+      {grids}
+    </StyledBoard>
+  )
+}

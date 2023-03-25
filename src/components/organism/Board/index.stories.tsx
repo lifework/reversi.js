@@ -1,21 +1,22 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Board from './index'
+import { Board } from './index'
 
 export default {
   title: 'Organism/Board',
   component: Board,
-  argTypes: {
-    size: {
-      control: { type: 'string' },
-      description: '大きさ',
-      table: {
-        type: { summary: 'string' },
-      },
-    },
-  },
 } as ComponentMeta<typeof Board>
 
-const Template: ComponentStory<typeof Board> = (args) => <Board {...args} />
+const Template: ComponentStory<typeof Board> = (args) => {
+  return (
+    <div style={{ width: '100px', height: '100px' }}>
+      <Board {...args} />
+    </div>
+  )
+}
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  color: 'green',
+  columns: 8,
+  rows: 8,
+}

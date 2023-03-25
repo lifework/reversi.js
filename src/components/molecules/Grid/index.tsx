@@ -2,7 +2,7 @@ import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
 import { Disk } from 'components/atoms/Disk'
 
-export type GridColor = 'green'
+export type GridColor = 'green' | 'blue' | 'gray'
 export type DiskColor = 'black' | 'white'
 
 export type GridProps = {
@@ -19,6 +19,8 @@ const StyledGrid = styled.div<{ color?: string }>`
   min-height: 10px;
   border-color: black;
   border-width: 1px;
+  border-style: solid;
+  padding: 1px;
   background-color: ${({ color }) => color};
 `
 

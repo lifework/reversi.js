@@ -1,4 +1,4 @@
-export type GridStateType = 'black' | 'white' | null
+export type DiskType = 'black' | 'white'
 
 export type PointType = {
   x: number
@@ -7,11 +7,11 @@ export type PointType = {
 
 export type GridType = {
   point: PointType
-  state: GridStateType
+  disk?: DiskType
 }
 
 export type BoardType = {
   columns: number
   rows: number
-  grids: GridType[]
+  grids?: GridType[]
 }

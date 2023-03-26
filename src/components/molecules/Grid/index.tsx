@@ -7,7 +7,7 @@ export type DiskColor = 'black' | 'white'
 
 export type GridProps = {
   color?: GridColor
-  diskColor?: DiskColor
+  disk?: DiskColor
 }
 
 const StyledGrid = styled.div<{ color?: string }>`
@@ -20,10 +20,10 @@ const StyledGrid = styled.div<{ color?: string }>`
   background-color: ${({ color }) => color};
 `
 
-export const Grid: FC<GridProps> = ({ color, diskColor }) => {
+export const Grid: FC<GridProps> = ({ color, disk: disk }) => {
   return (
     <StyledGrid color={color || 'green'}>
-      {!!diskColor && <Disk color={diskColor} />}
+      {!!disk && <Disk color={disk} />}
     </StyledGrid>
   )
 }

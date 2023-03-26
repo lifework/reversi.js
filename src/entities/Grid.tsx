@@ -1,12 +1,13 @@
 import { PointEntity } from './Point'
-import { GridStateType, GridType } from 'types'
+import { DiskColor } from 'components/atoms/Disk'
+import { DiskType, GridType } from 'types'
 
 export class GridEntity {
   readonly point: PointEntity
-  readonly state: GridStateType
+  readonly disk?: DiskType
 
-  constructor({ point, state }: GridType) {
+  constructor({ point, disk: disk }: GridType) {
     this.point = point
-    this.state = state
+    this.disk = disk
   }
 }

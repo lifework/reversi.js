@@ -17,5 +17,5 @@ const Template: ComponentStory<typeof Grid> = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   color: 'green',
-  diskColor: 'black',
+  disk: 'black',
 }

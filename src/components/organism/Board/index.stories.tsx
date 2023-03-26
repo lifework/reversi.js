@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Board } from './index'
+import { BoardEntity } from 'entities/Board'
 
 export default {
   title: 'Organism/Board',
@@ -14,10 +15,13 @@ const Template: ComponentStory<typeof Board> = (args) => {
   )
 }
 
+const columns = 8
+const rows = 8
 export const Default = Template.bind({})
 Default.args = {
+  state: new BoardEntity({ columns, rows }),
   color: 'green',
-  columns: 8,
-  rows: 8,
+  columns: columns,
+  rows: rows,
   boardSize: 640,
 }

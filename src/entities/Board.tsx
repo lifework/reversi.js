@@ -1,6 +1,6 @@
 import { GridEntity } from './Grid'
 import { PointEntity } from './Point'
-import { BoardType, GridStateType, GridType } from 'types'
+import { BoardType, DiskType, GridType } from 'types'
 
 export class BoardEntity {
   readonly columns: number
@@ -14,10 +14,11 @@ export class BoardEntity {
 
     for (let x = 0; x < columns; x++) {
       for (let y = 0; y < rows; y++) {
-        const point = new PointEntity({ x, y })
         const n = x + x * y
-        const state = null
-        this.grids[n] = new GridEntity({ point, state })
+
+        const point = new PointEntity({ x, y })
+        const disk = n % 3 == 0 ? 'black' : n % 3 == 1 ? 'white' : undefined
+        this.grids[n] = new GridEntity({ point, disk: disk })
       }
     }
   }

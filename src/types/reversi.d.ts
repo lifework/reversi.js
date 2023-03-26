@@ -1,4 +1,4 @@
-export type GridStateType = 'black' | 'white'
+export type GridStateType = 'black' | 'white' | null
 
 export type PointType = {
   x: number

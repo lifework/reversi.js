@@ -16,8 +16,8 @@ export class BoardEntity {
       for (let y = 0; y < rows; y++) {
         const point = new PointEntity({ x, y })
         const n = x + x * y
-        const state = 'black'
-        this.grids[n] = new GridEntity({ point, 'black' })
+        const state = null
+        this.grids[n] = new GridEntity({ point, state })
       }
     }
   }

@@ -19,4 +19,5 @@ Default.args = {
   color: 'green',
   columns: 8,
   rows: 8,
+  boardSize: 640,
 }

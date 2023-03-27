@@ -10,16 +10,44 @@ export class BoardEntity {
   constructor({ columns, rows }: BoardType) {
     this.columns = columns
     this.rows = rows
-    this.grids = new Array(columns * rows)
+    this.grids = new Array<GridEntity>(columns * rows)
 
-    for (let x = 0; x < columns; x++) {
-      for (let y = 0; y < rows; y++) {
-        const n = x + x * y
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < columns; x++) {
+        const n = x + rows * y
+        console.log(`BoardEntity.constructor - x=${x}, y=${y}, n=${n}`)
 
         const point = new PointEntity({ x, y })
-        const disk = n % 3 == 0 ? 'black' : n % 3 == 1 ? 'white' : undefined
-        this.grids[n] = new GridEntity({ point, disk: disk })
+
+        let disk: DiskType | undefined
+        if (x == columns / 2 - 1) {
+          if (y == rows / 2 - 1) {
+            disk = 'white'
+          }
+          if (y == rows / 2) {
+            disk = 'black'
+          }
+        }
+        if (x == columns / 2) {
+          if (y == rows / 2 - 1) {
+            disk = 'black'
+          }
+          if (y == rows / 2) {
+            disk = 'white'
+          }
+        }
+        this.grids[n] = new GridEntity({ point, disk })
       }
     }
+  }
+
+  put(point: PointEntity): boolean {
+    const n = point.x + this.rows * point.y
+    if (this.grids[n]) {
+      return false
+    }
+
+    this.grids[n].disk = 'white'
+    return true
   }
 }

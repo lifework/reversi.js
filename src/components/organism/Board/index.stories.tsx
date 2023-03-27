@@ -15,13 +15,10 @@ const Template: ComponentStory<typeof BoardContainer> = (args) => {
   )
 }
 
-const columns = 8
-const rows = 8
 export const Default = Template.bind({})
 Default.args = {
-  state: new BoardEntity({ columns, rows }),
   color: 'green',
-  columns: columns,
-  rows: rows,
-  boardSize: 640,
+  columns: 4,
+  rows: 4,
+  gridSize: 80,
 }

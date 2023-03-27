@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { GridContainer } from './index'
+import { PointEntity } from 'entities/Point'
 
 export default {
   title: 'Molecules/Grid',
@@ -15,7 +16,13 @@ const Template: ComponentStory<typeof GridContainer> = (args) => {
 }
 
 export const Default = Template.bind({})
+
+const point = new PointEntity({ x: 0, y: 0 })
 Default.args = {
+  point: point,
   color: 'green',
-  disk: 'black',
+  diskColor: 'black',
+  onClickHandler: (point) => {
+    console.log(`Grid: (${point.x}, ${point.y}) clicked`)
+  },
 }

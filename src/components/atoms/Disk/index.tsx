@@ -9,6 +9,7 @@ export type DiskProps = {
 }
 
 export const DiskContainer: FC<DiskProps> = ({ color, size, padding }) => {
+  console.log(`color=${color}`)
   return (
     <div style={{ padding: padding || '2px' }}>
       <svg

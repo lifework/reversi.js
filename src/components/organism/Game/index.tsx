@@ -7,7 +7,7 @@ export type GameProps = {
   color?: BoardColor
   columns: number
   rows: number
-  boardSize?: number
+  gridSize?: number
 }
 
 const StyledGame = styled.div<GameProps>`
@@ -21,23 +21,18 @@ export const GameContainer: FC<GameProps> = ({
   color,
   columns,
   rows,
-  boardSize,
+  gridSize,
 }) => {
-  const board = new BoardEntity({ columns, rows })
+  const boardRows = rows || 8
+  const boardColumns = columns || 8
 
   return (
-    <StyledGame
-      color={color}
-      columns={columns}
-      rows={rows}
-      boardSize={boardSize}
-    >
+    <StyledGame color={color} columns={columns} rows={rows}>
       <BoardContainer
-        state={board}
         color={color || 'green'}
-        columns={columns || 8}
-        rows={rows || 8}
-        boardSize={boardSize || 500}
+        columns={boardColumns}
+        rows={boardRows}
+        gridSize={gridSize || 80}
       />
     </StyledGame>
   )

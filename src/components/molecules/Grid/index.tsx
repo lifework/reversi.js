@@ -1,11 +1,14 @@
 import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
 import { DiskContainer } from 'components/atoms/Disk'
+import { PointEntity } from 'entities/Point'
 
 export type GridColor = 'green' | 'blue' | 'gray'
 export type DiskColor = 'black' | 'white'
 
 export type GridProps = {
+  point: PointEntity
+  onClickHandler: (point: PointEntity) => void
   color?: GridColor
   diskColor?: DiskColor
 }
@@ -20,9 +23,19 @@ const StyledGrid = styled.div<{ color?: string }>`
   background-color: ${({ color }) => color};
 `
 
-export const GridContainer: FC<GridProps> = ({ color, diskColor }) => {
+export const GridContainer: FC<GridProps> = ({
+  point,
+  color,
+  diskColor,
+  onClickHandler,
+}) => {
   return (
-    <StyledGrid color={color || 'green'}>
+    <StyledGrid
+      color={color || 'green'}
+      role="button"
+      onClick={() => onClickHandler(point)}
+      data-point={`(${point.x}, ${point.y})`}
+    >
       {!!diskColor && <DiskContainer color={diskColor} />}
     </StyledGrid>
   )

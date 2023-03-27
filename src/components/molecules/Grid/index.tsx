@@ -1,6 +1,6 @@
 import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
-import { Disk } from 'components/atoms/Disk'
+import { DiskContainer } from 'components/atoms/Disk'
 
 export type GridColor = 'green' | 'blue' | 'gray'
 export type DiskColor = 'black' | 'white'
@@ -20,10 +20,10 @@ const StyledGrid = styled.div<{ color?: string }>`
   background-color: ${({ color }) => color};
 `
 
-export const Grid: FC<GridProps> = ({ color, diskColor }) => {
+export const GridContainer: FC<GridProps> = ({ color, diskColor }) => {
   return (
     <StyledGrid color={color || 'green'}>
-      {!!diskColor && <Disk color={diskColor} />}
+      {!!diskColor && <DiskContainer color={diskColor} />}
     </StyledGrid>
   )
 }

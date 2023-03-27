@@ -1,6 +1,6 @@
 import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
-import { Board, BoardColor } from 'components/organism/Board'
+import { BoardContainer, BoardColor } from 'components/organism/Board'
 import { BoardEntity } from 'entities/Board'
 
 export type GameProps = {
@@ -22,7 +22,7 @@ export const Game: FC<GameProps> = ({ color, columns, rows, boardSize }) => {
 
   return (
     <StyledGame>
-      <Board
+      <BoardContainer
         state={board}
         color={color || 'green'}
         columns={columns || 8}

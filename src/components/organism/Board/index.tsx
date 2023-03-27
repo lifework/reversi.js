@@ -1,6 +1,6 @@
 import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
-import { Grid } from 'components/molecules/Grid'
+import { GridContainer } from 'components/molecules/Grid'
 import { BoardEntity } from 'entities/Board'
 
 export type BoardColor = 'green'
@@ -25,7 +25,7 @@ const StyledBoard = styled.div<BoardProps>`
   background-color: ${({ color }) => color};
 `
 
-export const Board: FC<BoardProps> = ({
+export const BoardContainer: FC<BoardProps> = ({
   state,
   columns,
   rows,
@@ -36,7 +36,7 @@ export const Board: FC<BoardProps> = ({
   const grids = state.grids
   for (let i = 0; i < columns * rows; i++) {
     gridComponents = gridComponents.concat(
-      <Grid color={color} diskColor={!!grids[i] && grids[i].disk} />,
+      <GridContainer color={color} diskColor={!!grids[i] && grids[i].disk} />,
     )
   }
 

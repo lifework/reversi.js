@@ -1,15 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Grid } from './index'
+import { GridContainer } from './index'
 
 export default {
   title: 'Molecules/Grid',
-  component: Grid,
-} as ComponentMeta<typeof Grid>
+  component: GridContainer,
+} as ComponentMeta<typeof GridContainer>
 
-const Template: ComponentStory<typeof Grid> = (args) => {
+const Template: ComponentStory<typeof GridContainer> = (args) => {
   return (
     <div style={{ width: '100px', height: '100px' }}>
-      <Grid {...args} />
+      <GridContainer {...args} />
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import { PointEntity } from './Point'
-import { DiskColor } from 'components/atoms/Disk'
 import { DiskType, GridType } from 'types'
 
 export class GridEntity {

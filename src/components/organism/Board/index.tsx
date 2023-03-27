@@ -38,12 +38,13 @@ export const Board: FC<BoardProps> = ({
   const grids = state.grids
   for (let i = 0; i < columns * rows; i++) {
     gridComponents.push(
-      <Grid color={color} disk={!!grids[i] && grids[i].disk} />,
+      <Grid color={color} diskColor={!!grids[i] && grids[i].disk} />,
     )
   }
 
   return (
     <StyledBoard
+      state={state}
       color={color}
       columns={columns}
       rows={rows}

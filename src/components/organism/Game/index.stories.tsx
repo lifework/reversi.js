@@ -1,13 +1,13 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Game } from './index'
+import { GameContainer } from './index'
 
 export default {
   title: 'Organism/Game',
-  component: Game,
-} as ComponentMeta<typeof Game>
+  component: GameContainer,
+} as ComponentMeta<typeof GameContainer>
 
-const Template: ComponentStory<typeof Game> = (args) => {
-  return <Game {...args} />
+const Template: ComponentStory<typeof GameContainer> = (args) => {
+  return <GameContainer {...args} />
 }
 
 export const Default = Template.bind({})

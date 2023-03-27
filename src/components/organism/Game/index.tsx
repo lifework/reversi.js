@@ -17,11 +17,21 @@ const StyledGame = styled.div<GameProps>`
   padding: 2px;
 `
 
-export const Game: FC<GameProps> = ({ color, columns, rows, boardSize }) => {
+export const GameContainer: FC<GameProps> = ({
+  color,
+  columns,
+  rows,
+  boardSize,
+}) => {
   const board = new BoardEntity({ columns, rows })
 
   return (
-    <StyledGame>
+    <StyledGame
+      color={color}
+      columns={columns}
+      rows={rows}
+      boardSize={boardSize}
+    >
       <BoardContainer
         state={board}
         color={color || 'green'}

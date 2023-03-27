@@ -1,9 +1,7 @@
-import { Girl } from '@mui/icons-material'
 import { FC, ComponentProps } from 'react'
 import styled from 'styled-components'
-import { Grid, GridColor } from 'components/molecules/Grid'
+import { Grid } from 'components/molecules/Grid'
 import { BoardEntity } from 'entities/Board'
-import { GridEntity } from 'entities/Grid'
 
 export type BoardColor = 'green'
 
@@ -34,10 +32,10 @@ export const Board: FC<BoardProps> = ({
   boardSize,
   color,
 }) => {
-  const gridComponents = []
+  let gridComponents: Array<JSX.Element> = []
   const grids = state.grids
   for (let i = 0; i < columns * rows; i++) {
-    gridComponents.push(
+    gridComponents = gridComponents.concat(
       <Grid color={color} diskColor={!!grids[i] && grids[i].disk} />,
     )
   }

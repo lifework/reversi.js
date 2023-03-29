@@ -8,7 +8,8 @@ export type DiskProps = {
   padding?: string
 }
 
-export const Disk: FC<DiskProps> = ({ color, size, padding }) => {
+export const DiskContainer: FC<DiskProps> = ({ color, size, padding }) => {
+  console.log(`DiskContainer: color=${color}`)
   return (
     <div style={{ padding: padding || '2px' }}>
       <svg

@@ -1,12 +1,14 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Disk } from './index'
+import { DiskContainer } from './index'
 
 export default {
   title: 'Atoms/Disk',
-  component: Disk,
-} as ComponentMeta<typeof Disk>
+  component: DiskContainer,
+} as ComponentMeta<typeof DiskContainer>
 
-const Template: ComponentStory<typeof Disk> = (args) => <Disk {...args} />
+const Template: ComponentStory<typeof DiskContainer> = (args) => (
+  <DiskContainer {...args} />
+)
 
 // Black
 export const Black = Template.bind({})

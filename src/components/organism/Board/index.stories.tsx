@@ -1,15 +1,16 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Board } from './index'
+import { BoardContainer } from './index'
+import { BoardEntity } from 'entities/Board'
 
 export default {
   title: 'Organism/Board',
-  component: Board,
-} as ComponentMeta<typeof Board>
+  component: BoardContainer,
+} as ComponentMeta<typeof BoardContainer>
 
-const Template: ComponentStory<typeof Board> = (args) => {
+const Template: ComponentStory<typeof BoardContainer> = (args) => {
   return (
     <div style={{ width: '100px', height: '100px' }}>
-      <Board {...args} />
+      <BoardContainer {...args} />
     </div>
   )
 }
@@ -17,6 +18,7 @@ const Template: ComponentStory<typeof Board> = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   color: 'green',
-  columns: 8,
-  rows: 8,
+  columns: 4,
+  rows: 4,
+  gridSize: 80,
 }

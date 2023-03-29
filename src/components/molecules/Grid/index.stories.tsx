@@ -1,21 +1,28 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Grid } from './index'
+import { GridContainer } from './index'
+import { PointEntity } from 'entities/Point'
 
 export default {
   title: 'Molecules/Grid',
-  component: Grid,
-} as ComponentMeta<typeof Grid>
+  component: GridContainer,
+} as ComponentMeta<typeof GridContainer>
 
-const Template: ComponentStory<typeof Grid> = (args) => {
+const Template: ComponentStory<typeof GridContainer> = (args) => {
   return (
     <div style={{ width: '100px', height: '100px' }}>
-      <Grid {...args} />
+      <GridContainer {...args} />
     </div>
   )
 }
 
 export const Default = Template.bind({})
+
+const point = new PointEntity({ x: 0, y: 0 })
 Default.args = {
+  point: point,
   color: 'green',
   diskColor: 'black',
+  onClickHandler: (point) => {
+    console.log(`Grid: (${point.x}, ${point.y}) clicked`)
+  },
 }

@@ -56,37 +56,6 @@ const boardReducer: Reducer<BoardEntity, BoardActionType> = (
   return state
 }
 
-const createGridContainers = (
-  board: BoardEntity,
-  dispatch: Dispatch<BoardActionType>,
-  color?: GridColor,
-) => {
-  const gridComponents: Array<JSX.Element> = []
-  const grids = board.grids
-  for (let y = 0; y < board.rows; y++) {
-    for (let x = 0; x < board.columns; x++) {
-      const n = x + board.rows * y
-      const grid = grids[n]
-      console.log(
-        `BoardContainer - create GridContainer[${n}]: (${x}, ${y}) = ${grid.disk}`,
-      )
-      gridComponents.push(
-        <GridContainer
-          key={`${n}-${grid.disk || 'space'}`}
-          point={grid.point}
-          color={color}
-          diskColor={grid.disk}
-          onClickHandler={(point) =>
-            dispatch({ action: 'onClickGrid', point: point })
-          }
-        />,
-      )
-    }
-  }
-
-  return gridComponents
-}
-
 export const BoardContainer: FC<BoardProps> = ({
   columns,
   rows,
@@ -98,7 +67,22 @@ export const BoardContainer: FC<BoardProps> = ({
 
   return (
     <StyledBoard columns={columns} rows={rows} gridSize={gridSize}>
-      {createGridContainers(state, dispatch, color)}
+      {state.grids.map((grid) => {
+        console.log(
+          `BoardContainer - create GridContainer[(${grid.point.x}, ${grid.point.y}) = ${grid.disk}`,
+        )
+        return (
+          <GridContainer
+            key={`(${grid.point.x}, ${grid.point.y}) = ${grid.disk || 'space'}`}
+            point={grid.point}
+            color={color}
+            diskColor={grid.disk}
+            onClickHandler={(point) =>
+              dispatch({ action: 'onClickGrid', point: point })
+            }
+          />
+        )
+      })}
     </StyledBoard>
   )
 }

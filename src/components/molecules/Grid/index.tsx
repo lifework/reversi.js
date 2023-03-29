@@ -29,6 +29,7 @@ export const GridContainer: FC<GridProps> = ({
   diskColor,
   onClickHandler,
 }) => {
+  console.log(`GridContainer: diskColor=${diskColor}, (${point.x}, ${point.y})`)
   return (
     <StyledGrid
       color={color || 'green'}

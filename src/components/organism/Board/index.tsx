@@ -1,6 +1,6 @@
-import { FC, ComponentProps, useReducer, Reducer } from 'react'
+import { FC, ComponentProps, useReducer, Reducer, Dispatch } from 'react'
 import styled from 'styled-components'
-import { GridContainer } from 'components/molecules/Grid'
+import { GridColor, GridContainer } from 'components/molecules/Grid'
 import { BoardEntity } from 'entities/Board'
 import { PointEntity } from 'entities/Point'
 import { PointType } from 'types'
@@ -56,25 +56,23 @@ const boardReducer: Reducer<BoardEntity, BoardActionType> = (
   return state
 }
 
-export const BoardContainer: FC<BoardProps> = ({
-  columns,
-  rows,
-  gridSize,
-  color,
-}) => {
-  const initialState = new BoardEntity({ columns, rows })
-  const [state, dispatch] = useReducer(boardReducer, initialState)
-
-  let gridComponents: Array<JSX.Element> = []
-  const grids = state.grids
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < columns; x++) {
-      const n = x + rows * y
+const createGridContainers = (
+  board: BoardEntity,
+  dispatch: Dispatch<BoardActionType>,
+  color?: GridColor,
+) => {
+  const gridComponents: Array<JSX.Element> = []
+  const grids = board.grids
+  for (let y = 0; y < board.rows; y++) {
+    for (let x = 0; x < board.columns; x++) {
+      const n = x + board.rows * y
       const grid = grids[n]
-      console.log(`GridContainer[${n}]: (${x}, ${y}) = ${grid.disk}`)
-      gridComponents = gridComponents.concat(
+      console.log(
+        `BoardContainer - create GridContainer[${n}]: (${x}, ${y}) = ${grid.disk}`,
+      )
+      gridComponents.push(
         <GridContainer
-          key={n}
+          key={`${n}-${grid.disk || 'space'}`}
           point={grid.point}
           color={color}
           diskColor={grid.disk}
@@ -86,9 +84,21 @@ export const BoardContainer: FC<BoardProps> = ({
     }
   }
 
+  return gridComponents
+}
+
+export const BoardContainer: FC<BoardProps> = ({
+  columns,
+  rows,
+  gridSize,
+  color,
+}) => {
+  const initialState = new BoardEntity({ columns, rows })
+  const [state, dispatch] = useReducer(boardReducer, initialState)
+
   return (
     <StyledBoard columns={columns} rows={rows} gridSize={gridSize}>
-      {gridComponents}
+      {createGridContainers(state, dispatch, color)}
     </StyledBoard>
   )
 }

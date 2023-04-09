@@ -53,7 +53,11 @@ const boardReducer: Reducer<BoardEntity, BoardActionType> = (
       state.grids[n].disk = disk
     }
   }
-  return state
+  return new BoardEntity({
+    columns: state.columns,
+    rows: state.rows,
+    grids: state.grids,
+  })
 }
 
 export const BoardContainer: FC<BoardProps> = ({

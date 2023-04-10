@@ -46,11 +46,13 @@ const boardReducer: Reducer<BoardEntity, BoardActionType> = (
       const point = action.point
       const n = point.x + state.rows * point.y
 
-      const disk = 'white'
-      console.log(
-        `action - ${action.action}: Grid[${n}]: (${point.x}, ${point.y}) = ${disk}`,
-      )
-      state.grids[n].disk = disk
+      if (!state.grids[n].disk) {
+        const disk = 'white'
+        console.log(
+          `action - ${action.action}: Grid[${n}]: (${point.x}, ${point.y}) = ${disk}`,
+        )
+        state.grids[n].disk = disk
+      }
     }
   }
   return new BoardEntity({

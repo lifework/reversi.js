@@ -1,4 +1,4 @@
-import { FC, ComponentProps } from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 import { DiskContainer } from 'components/atoms/Disk'
 import { PointEntity } from 'entities/Point'

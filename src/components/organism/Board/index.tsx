@@ -47,19 +47,11 @@ const boardReducer: Reducer<BoardEntity, BoardActionType> = (
       const n = point.x + state.rows * point.y
 
       if (!state.grids[n].disk) {
-        const disk = 'white'
-        console.log(
-          `action - ${action.action}: Grid[${n}]: (${point.x}, ${point.y}) = ${disk}`,
-        )
-        state.grids[n].disk = disk
+        state.put(point)
       }
     }
   }
-  return new BoardEntity({
-    columns: state.columns,
-    rows: state.rows,
-    grids: state.grids,
-  })
+  return state.clone()
 }
 
 export const BoardContainer: FC<BoardProps> = ({
@@ -74,9 +66,9 @@ export const BoardContainer: FC<BoardProps> = ({
   return (
     <StyledBoard columns={columns} rows={rows} gridSize={gridSize}>
       {state.grids.map((grid) => {
-        console.log(
-          `BoardContainer - create GridContainer[(${grid.point.x}, ${grid.point.y}) = ${grid.disk}`,
-        )
+        // console.log(
+        //   `BoardContainer - create GridContainer[(${grid.point.x}, ${grid.point.y}) = ${grid.disk}`,
+        // )
         return (
           <GridContainer
             key={`(${grid.point.x}, ${grid.point.y}) = ${grid.disk || 'space'}`}

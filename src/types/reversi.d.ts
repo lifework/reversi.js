@@ -14,4 +14,6 @@ export type BoardType = {
   columns: number
   rows: number
   grids?: GridType[]
+  players?: PlayerEntity[]
+  currentPlayer?: number
 }

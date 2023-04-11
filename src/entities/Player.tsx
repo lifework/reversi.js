@@ -6,4 +6,8 @@ export class PlayerEntity {
   constructor(color: DiskType) {
     this.color = color
   }
+
+  opponentDisk(): DiskType {
+    return this.color === 'white' ? 'black' : 'white'
+  }
 }

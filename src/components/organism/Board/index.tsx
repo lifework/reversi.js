@@ -47,7 +47,7 @@ const boardReducer: Reducer<BoardEntity, BoardActionType> = (
       const n = point.x + state.rows * point.y
 
       if (!state.grids[n].disk) {
-        state.put(point)
+        state.move(point)
       }
     }
   }

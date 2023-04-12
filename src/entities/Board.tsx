@@ -52,11 +52,44 @@ export class BoardEntity {
       return false
     }
 
+    // DISKをおいてひっくり返す
     this.grids[n].disk = this.currentPlayer().color
+    this.turnOverDisk(point, currentPlayer)
     this.setNextPlayer()
     console.log(`BoardEntity.move - currentPlayer=${this.currentPlayerIndex}`)
 
     return true
+  }
+
+  turnOverDisk(basePoint: PointEntity, player: PlayerEntity): number {
+    let turned = 0
+    for (const direction of this.allDirections()) {
+      if (this.IsMovableDirection(basePoint, player, direction)) {
+        turned += this.turnOverDiskToDirection(basePoint, player, direction)
+      }
+    }
+    return turned
+  }
+
+  turnOverDiskToDirection(
+    basePoint: PointEntity,
+    player: PlayerEntity,
+    direction: DirectionType,
+  ): number {
+    const opponent = player.opponentDisk()
+    let turned = 0
+
+    let point = basePoint.offset(direction)
+    while (
+      this.disk(point) === opponent &&
+      !!this.disk(point.offset(direction))
+    ) {
+      this.grid(point).disk = player.color
+      turned++
+      point = point.offset(direction)
+    }
+
+    return turned
   }
 
   IsMovable(basePoint: PointEntity, player: PlayerEntity): boolean {

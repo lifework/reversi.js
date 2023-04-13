@@ -1,4 +1,4 @@
-import { FC, ComponentProps } from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 import { DiskContainer } from 'components/atoms/Disk'
 import { PointEntity } from 'entities/Point'
@@ -29,9 +29,9 @@ export const GridContainer: FC<GridProps> = ({
   diskColor,
   onClickHandler,
 }) => {
-  console.log(
-    `GridContainer:  diskColor=${diskColor}, (${point.x}, ${point.y})`,
-  )
+  // console.log(
+  //   `GridContainer:  diskColor=${diskColor}, (${point.x}, ${point.y})`,
+  // )
   return (
     <StyledGrid
       color={color || 'green'}

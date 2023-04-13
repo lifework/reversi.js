@@ -12,6 +12,6 @@ const Template: ComponentStory<typeof GameContainer> = (args) => {
 
 export const Default = Template.bind({})
 Default.args = {
-  columns: 8,
-  rows: 8,
+  columns: 4,
+  rows: 4,
 }
